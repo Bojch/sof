@@ -32,6 +32,12 @@
     $.extend(sof, {
 
         //------------------------------------------------------------------------
+        get: function(type)
+        {
+            return S.prepareOutput(type); 
+        },
+
+        //------------------------------------------------------------------------
         setType: function(type)
         {
             if(type)
@@ -41,9 +47,23 @@
         },
 
         //------------------------------------------------------------------------
-        get: function(type)
+        setFields: function(fields)
         {
-            return S.prepareOutput(type); 
+            if(typeof fields == "string")
+                fields = [fields];
+
+            if(fields instanceof Array)
+            {
+                var O1 = {};
+
+                $.each(fields, function() {
+                    
+                    if(O[this.name])
+                        console.log(this.name);
+                });
+            }
+
+            return sof;
         }
     });
 
@@ -168,6 +188,19 @@
     };
 
     //------------------------------------------------------------------------
+    function process()
+    {
+        // get Form data
+        S.serializeForm(S.current.that);
+        S.serializeCheckbox();
+        S.serializeRadio();
+        S.serializeSelect();
+
+        // prepare object
+        S.prepareObject();
+    };
+
+    //------------------------------------------------------------------------
     $.fn.sof = function(options)
     {
         // init and set options
@@ -177,14 +210,7 @@
         }
         init($.extend(options, opt));
 
-        // get Form data
-        S.serializeForm(this);
-        S.serializeCheckbox();
-        S.serializeRadio();
-        S.serializeSelect();
-
-        // prepare object
-        S.prepareObject();
+        process();
 
         // remove parents with one children
         O = S.childToString(O);

@@ -13,7 +13,7 @@
 	<script type="text/javascript">
 		function serializeForm(id)
 		{
-			var data = $(id).sof().get('object');
+			var data = $(id).sof().setFields('vegi').get('object');
 			console.log(data);
 
 			//var data = $(id).sof().get();

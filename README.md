@@ -1,4 +1,4 @@
-# Sof - Serial Object Form v0.0.3
+# Sof - Serialize Object Form v0.0.3
 
 ## Description
 

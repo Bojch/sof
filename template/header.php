@@ -16,8 +16,8 @@
 			var data = $(id).sof().setFields('vegi').get('object');
 			console.log(data);
 
-			//var data = $(id).sof().get();
-			//console.log(data);
+			var data = $(id).sof().setFields(['Fname', 'Lname', 'education']).get();
+			console.log(data);
 		};
 	</script>
 </head>

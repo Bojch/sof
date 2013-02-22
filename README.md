@@ -26,6 +26,10 @@ Just clone it on your server and simple test it ;)
  	$("form-slector").sof().get('object');
  	$("form-slector").sof().setType('object').get();
 
+ 	// get only choosen fileds
+ 	$("form-slector").sof().setFields('field_name').get();
+ 	$("form-slector").sof().setFields(['f1', 'f2', ...]).get();
+
 ## General Info
 
 * Author: Bojan Mazej

@@ -21,6 +21,11 @@
  *      // also set type like this
  *      $("form-slector").sof().get('object');
  *      $("form-slector").sof().setType('object').get();
+ *
+ *      // get only choosen fileds
+ *      $("form-slector").sof().setFields('field_name').get();
+ *      $("form-slector").sof().setFields(['f1', 'f2', ...]).get();
+ *      
  * </code>
  */
 
@@ -49,18 +54,18 @@
         //------------------------------------------------------------------------
         setFields: function(fields)
         {
-            if(typeof fields == "string")
-                fields = [fields];
+            if(typeof fields == "string" && fields != "") fields = [fields];
 
             if(fields instanceof Array)
             {
                 var O1 = {};
 
-                $.each(fields, function() {
-                    
-                    if(O[this.name])
-                        console.log(this.name);
-                });
+                for (f in fields)
+                {
+                    O1[fields[f]] = O[fields[f]];
+                }
+
+                O = O1;
             }
 
             return sof;
